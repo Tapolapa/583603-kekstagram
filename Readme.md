@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Tanya Forstmann](https://up.htmlacademy.ru/javascript/14/user/583603).
-* Наставник: `Неизвестно`.
+* Наставник: `Вероника Самохина`.
 
 ---
 
