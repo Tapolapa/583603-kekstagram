@@ -1,169 +1,76 @@
 'use strict';
-var photos = [
-  {url: 'photos/1.jpg',
-    likes: 15,
-    comments: 'Всё отлично!',
-    description: 'Тестим новую камеру!'
-  },
-  {
-    url: 'photos/2.jpg',
-    likes: 16,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/3.jpg',
-    likes: 17,
-    comments: 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    description: 'Как же круто тут кормят'
-  },
-  {
-    url: 'photos/4.jpg',
-    likes: 18,
-    comments: 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    description: 'Отдыхаем...'
-  },
-  {
-    url: 'photos/5.jpg',
-    likes: 19,
-    comments: 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    description: 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья.'
-  },
-  {
-    url: 'photos/6.jpg',
-    likes: 20,
-    comments: 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-    description: 'Вот это тачка!'
-  },
-  {
-    url: 'photos/7.jpg',
-    likes: 21,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/8.jpg',
-    likes: 22,
-    comments: 'Всё отлично!.',
-    description: 'Как же круто тут кормят'
-  },
-  {
-    url: 'photos/9.jpg',
-    likes: 199,
-    comments: 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    description: 'Отдыхаем...'
-  },
-  {
-    url: 'photos/10.jpg',
-    likes: 180,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Вот это тачка!'
-  },
-  {
-    url: 'photos/11.jpg',
-    likes: 46,
-    comments: 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    description: 'Как же круто тут кормят'
-  },
-  {
-    url: 'photos/12.jpg',
-    likes: 67,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......'
-  },
-  {
-    url: 'photos/13.jpg',
-    likes: 81,
-    comments: 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/14.jpg',
-    likes: 100,
-    comments: 'Всё отлично!',
-    description: 'Тестим новую камеру!'
-  },
-  {
-    url: 'photos/15.jpg',
-    likes: 118,
-    comments: 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    description: 'Отдыхаем...'
-  },
-  {
-    url: 'photos/16.jpg',
-    likes: 111,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Отдыхаем...'
-  },
-  {
-    url: 'photos/17.jpg',
-    likes: 119,
-    comments: 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
-    description: 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......'
-  },
-  {
-    url: 'photos/18.jpg',
-    likes: 199,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/19.jpg',
-    likes: 199,
-    comments: 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    description: 'Вот это тачка!'
-  },
-  {
-    url: 'photos/20.jpg',
-    likes: 162,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Как же круто тут кормят'
-  },
-  {
-    url: 'photos/21.jpg',
-    likes: 164,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/22.jpg',
-    likes: 180,
-    comments: 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    description: 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......'
-  },
-  {
-    url: 'photos/23.jpg',
-    likes: 153,
-    comments: 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    description: 'Тестим новую камеру!'
-  },
-  {
-    url: 'photos/24.jpg',
-    likes: 169,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-  {
-    url: 'photos/25.jpg',
-    likes: 170,
-    comments: 'В целом всё неплохо. Но не всё.',
-    description: 'Затусили с друзьями на море!'
-  },
-];
-var pictureTemplate = document.querySelector('#picture').content.querySelector('a');
-var createPictures = function () {
-  for (var i = 0; i < photos.length; i++) {
-    var pituresElement = pictureTemplate.cloneNode(true);
 
-    pituresElement.querySelector('.picture__img').textContent = photos[i].url;
-    pituresElement.querySelector('.picture__stat--likes').textContent = photos[i].likes;
-    pituresElement.querySelector('.picture__stat--comments').textContent = photos[i].comments;
-    pituresElement.querySelector('.picture__stats').textContent = photos[i].description;
-    pictureTemplate.appendChild(pituresElement);
-  }
-  return pituresElement;
+var photoPaths = ['photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg', 'photos/4.jpg', 'photos/5.jpg',
+  'photos/6.jpg', 'photos/7.jpg', 'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg',
+  'photos/11.jpg', 'photos/12.jpg', 'photos/13.jpg', 'photos/14.jpg', 'photos/15.jpg',
+  'photos/16.jpg', 'photos/17.jpg', 'photos/18.jpg', 'photos/19.jpg', 'photos/20.jpg',
+  'photos/22.jpg', 'photos/23.jpg', 'photos/24.jpg', 'photos/25.jpg'
+];
+
+var photoComments = ['Всё отлично!', 'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
+  'Отдыхаем...', 'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья.',
+  'Вот это тачка!'
+];
+
+var photoDescriptions = ['Тестим новую камеру!', 'Затусили с друзьями на море!', 'Как же круто тут кормят',
+  'Вот это тачка!'
+];
+
+var photoObjects = [];
+var photoQuantity = 25;
+
+var getRandom = function (arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 };
-var pictureDraw = document.createDocumentFragment();
-for (var i = 0; i < photos.length; i++) {
-  pictureDraw.appendChild(createPictures(photos[i]));
+
+var getRandomNumbers = function (min, max) {
+  return Math.random() * (max - min) + min;
+};
+
+for (var i = 0; i < photoQuantity; i++) {
+  photoObjects[i] =
+    {url: getRandom(photoPaths),
+      likes: getRandomNumbers((15, 200)),
+      comments: getRandomNumbers(1, 2) + ' ' + getRandom(photoComments),
+      description: getRandom(photoDescriptions)
+    };
 }
+var pictureTemplate = document.querySelector('#picture').content.querySelector('.picture__link');
+var picturesElementList = document.querySelector('.picture__stats');
+
+var createPictures = function () {
+  photoObjects.forEach(function (item) {
+    var pituresElement = pictureTemplate.cloneNode(true);
+    pituresElement.querySelector('.picture__img').src = item.url;
+    pituresElement.querySelector('.picture__stat--likes').textContent = item.likes;
+    pituresElement.querySelector('.picture__stat--comments').textContent = item.comments;
+    picturesElementList.appendChild(pituresElement);
+  });
+};
+
+pictureTemplate = document.createDocumentFragment();
+for (i = 0; i < photoObjects.length; i++) {
+  pictureTemplate.appendChild(createPictures(photoObjects[i]));
+}
+var bigPictureList = document.querySelector('.big-picture');
+bigPictureList.classList.remove('hidden');
+
+
+photoObjects.forEach(function (item) {
+  var element = bigPictureList.cloneNode(true);
+  element.querySelector('.big-picture__img').src = item.url;
+  element.querySelector('.likes-count').textContent = item.likes;
+  element.querySelector('.comments-count').textContent = item.comments;
+  element.querySelector('.social__comments').textContent = item. description;
+  bigPictureList.appendChild(element);
+});
+
+
+var socialCount = document.querySelector('.social__comment-count', '.social__loadmore');
+socialCount.classList.add('visually-hidden');
+
+
