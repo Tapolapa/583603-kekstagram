@@ -22,6 +22,7 @@ var photoDescriptions = ['Тестим новую камеру!', 'Затуси�
 
 var photoObjects = [];
 var photoQuantity = 25;
+var numberComments = 2;
 
 var getRandom = function (arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -30,12 +31,22 @@ var getRandom = function (arr) {
 var getRandomNumbers = function (min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 };
+var getRandomComments = function () {
+  var per = '<li class="social__comment social__comment--text">' + '<img class="social__picture" src="img/avatar-';
+  var per1 = '.svg"' + 'alt="Аватар комментатора фотографии" width="35" height="35">' + '<p class="social__text">';
+  var per2 = '</p>' + '</li>';
+  var res = '';
+  for (i = 0; i < numberComments; i++) {
+    res = res + per + getRandomNumbers(2, 6) + per1 + getRandom(photoComments) + per2;
+  }
+  return res;
+};
 
 for (var i = 0; i < photoQuantity; i++) {
   photoObjects[i] =
     {url: getRandom(photoPaths),
       likes: getRandomNumbers(5, 200),
-      comments: getRandomNumbers(1, 2) + ' ' + getRandom(photoComments),
+      comments: getRandom(photoComments),
       description: getRandom(photoDescriptions)
     };
 }
@@ -60,19 +71,16 @@ bigPictureList.classList.remove('hidden');
 bigPictureList.appendChild(paint);
 
 var bigPhotoItem = photoObjects[0];
+
 bigPictureList.querySelector('.big-picture__img').src = bigPhotoItem.url;
 bigPictureList.querySelector('.likes-count').textContent = bigPhotoItem.likes;
 bigPictureList.querySelector('.comments-count').textContent = bigPhotoItem.comments;
 bigPictureList.querySelector('.social__caption').textContent = bigPhotoItem.description;
-bigPictureList.querySelector('.social__comments').innerHTML =
-'<li class="social__comment social__comment--text">' +
-  '<img class="social__picture" src="img/avatar-' + getRandomNumbers(1, 6) + '.svg"' +
-  'alt="Аватар комментатора фотографии" width="35" height="35">' +
-  '<p class="social__text">' + bigPhotoItem.comments + '</p>' +
-'</li>';
+bigPictureList.querySelector('.social__comments').innerHTML = getRandomComments();
 
 var socialCount = document.querySelector('.social__comment-count');
-socialCount = document.querySelector('.social__loadmore');
 socialCount.classList.add('visually-hidden');
+var socialLoadmore = document.querySelector('.social__loadmore');
+socialLoadmore.classList.add('visually-hidden');
 
 
