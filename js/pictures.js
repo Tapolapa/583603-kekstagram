@@ -28,31 +28,33 @@ var getRandom = function (arr) {
 };
 
 var getRandomNumbers = function (min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 for (var i = 0; i < photoQuantity; i++) {
   photoObjects[i] =
     {url: getRandom(photoPaths),
-      likes: getRandomNumbers((15, 200)),
+      likes: getRandomNumbers(5, 200),
       comments: getRandomNumbers(1, 2) + ' ' + getRandom(photoComments),
       description: getRandom(photoDescriptions)
     };
 }
 var pictureTemplate = document.querySelector('#picture').content.querySelector('.picture__link');
 
-var createPictures = function () {
-  photoObjects.forEach(function (item) {
-    var pituresElement = pictureTemplate.cloneNode(true);
-    pituresElement.querySelector('.picture__img').src = item.url;
-    pituresElement.querySelector('.picture__stat--likes').textContent = item.likes;
-    pituresElement.querySelector('.picture__stat--comments').textContent = item.comments;
-  });
+var createPictures = function (item) {
+  var pictureElements = pictureTemplate.cloneNode(true);
+  pictureElements.querySelector('.picture__img').src = item.url;
+  pictureElements.querySelector('.picture__stat--likes').textContent = item.likes;
+  pictureElements.querySelector('.picture__stat--comments').textContent = item.comments;
+  return pictureElements;
 };
 var paint = document.createDocumentFragment();
-for (i = 0; i < photoObjects; i++) {
+for (i = 0; i < photoObjects.length; i++) {
   paint.appendChild(createPictures(photoObjects[i]));
 }
+var picturesContainer = document.querySelector('.pictures');
+picturesContainer.appendChild(paint);
+
 var bigPictureList = document.querySelector('.big-picture');
 bigPictureList.classList.remove('hidden');
 bigPictureList.appendChild(paint);
@@ -61,10 +63,16 @@ var bigPhotoItem = photoObjects[0];
 bigPictureList.querySelector('.big-picture__img').src = bigPhotoItem.url;
 bigPictureList.querySelector('.likes-count').textContent = bigPhotoItem.likes;
 bigPictureList.querySelector('.comments-count').textContent = bigPhotoItem.comments;
-bigPictureList.querySelector('.social__comments').textContent = bigPhotoItem.description;
+bigPictureList.querySelector('.social__caption').textContent = bigPhotoItem.description;
+bigPictureList.querySelector('.social__comments').innerHTML =
+'<li class="social__comment social__comment--text">' +
+  '<img class="social__picture" src="img/avatar-' + getRandomNumbers(1, 6) + '.svg"' +
+  'alt="Аватар комментатора фотографии" width="35" height="35">' +
+  '<p class="social__text">' + bigPhotoItem.comments + '</p>' +
+'</li>';
 
-
-var socialCount = document.querySelector('.social__comment-count', '.social__loadmore');
+var socialCount = document.querySelector('.social__comment-count');
+socialCount = document.querySelector('.social__loadmore');
 socialCount.classList.add('visually-hidden');
 
 
