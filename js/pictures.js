@@ -71,7 +71,7 @@ bigPictureList.appendChild(paint);
 
 var bigPhotoItem = photoObjects[getRandomNumbers(0, photoObjects.length - 1)];
 
-bigPictureList.querySelector('.big-picture__img').src = bigPhotoItem.url;
+bigPictureList.querySelector('.big-picture__img img').src = bigPhotoItem.url;
 bigPictureList.querySelector('.likes-count').textContent = bigPhotoItem.likes;
 bigPictureList.querySelector('.comments-count').textContent = bigPhotoItem.comments.length.toString();
 bigPictureList.querySelector('.social__caption').textContent = bigPhotoItem.description;
