@@ -37,7 +37,8 @@ var getRandomComments = function () {
   var per2 = '</p>' + '</li>';
   var res = '';
   for (i = 0; i < numberComments; i++) {
-    res = res + per + getRandomNumbers(2, 6) + per1 + getRandom(photoComments) + per2;
+    res = res + per + getRandomNumbers(2, 6) + per1 + photoObjects[getRandomNumbers(0, photoObjects.length - 1)].
+      comments[0] + per2;
   }
   return res;
 };
@@ -46,7 +47,7 @@ for (var i = 0; i < photoQuantity; i++) {
   photoObjects[i] =
     {url: getRandom(photoPaths),
       likes: getRandomNumbers(5, 200),
-      comments: getRandom(photoComments),
+      comments: [getRandom(photoComments), getRandom(photoComments)],
       description: getRandom(photoDescriptions)
     };
 }
@@ -70,11 +71,11 @@ var bigPictureList = document.querySelector('.big-picture');
 bigPictureList.classList.remove('hidden');
 bigPictureList.appendChild(paint);
 
-var bigPhotoItem = photoObjects[0];
+var bigPhotoItem = photoObjects[getRandomNumbers(0, photoObjects.length - 1)];
 
 bigPictureList.querySelector('.big-picture__img').src = bigPhotoItem.url;
 bigPictureList.querySelector('.likes-count').textContent = bigPhotoItem.likes;
-bigPictureList.querySelector('.comments-count').textContent = bigPhotoItem.comments;
+bigPictureList.querySelector('.comments-count').textContent = bigPhotoItem.comments.length.toString();
 bigPictureList.querySelector('.social__caption').textContent = bigPhotoItem.description;
 bigPictureList.querySelector('.social__comments').innerHTML = getRandomComments();
 
